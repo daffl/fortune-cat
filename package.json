@@ -1,0 +1,33 @@
+{
+  "name": "fortune-cat",
+  "version": "0.0.1",
+  "description": "The 2013 Beakerhead Fortune Cat code",
+  "main": "lib/app.js",
+  "dependencies": {
+    "phidgets": "~0.2.0",
+    "underscore": "~1.5.1",
+    "express": "~3.3.8",
+    "socket.io": "~0.9.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node lib/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/daffl/fortune-cat.git"
+  },
+  "keywords": [
+    "beakerhead",
+    "art",
+    "festival",
+    "phidgets",
+    "fortune"
+  ],
+  "author": "David Luecke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daffl/fortune-cat/issues"
+  }
+}

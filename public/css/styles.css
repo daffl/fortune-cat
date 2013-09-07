@@ -1,0 +1,31 @@
+body {
+	background-color: #333;
+}
+
+canvas {
+	border-left: 1px solid #777;
+	border-right: 1px solid #777;
+	background-color: #222;
+}
+
+#container {
+	background-color: #FFF;
+	position: absolute;
+	height: 220px;
+	left: 50%;
+	top: 50%;
+	margin-left: -320px;
+	margin-top: -160px;
+}
+
+#container #reels {
+	padding: 0 10px;
+	display: block;
+	position: relative;
+	height: 200px;
+	overflow: hidden;
+	border: 10px solid;
+	border-color: #777 #999 #666 #999;
+	border-radius: 3px;
+	-moz-box-shadow: #fff 0px 1px 0px;
+}
