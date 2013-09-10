@@ -1,5 +1,7 @@
 body {
+	font-family:'Conv_HWYGOTH',Sans-Serif;
 	background-color: #333;
+	color: #FFF;
 }
 
 canvas {
@@ -8,14 +10,17 @@ canvas {
 	background-color: #222;
 }
 
+canvas.active {
+	background-color: #186d8b;
+}
+
 #container {
-	background-color: #FFF;
 	position: absolute;
 	height: 220px;
 	left: 50%;
 	top: 50%;
 	margin-left: -320px;
-	margin-top: -160px;
+	margin-top: -110px;
 }
 
 #container #reels {
@@ -28,4 +33,11 @@ canvas {
 	border-color: #777 #999 #666 #999;
 	border-radius: 3px;
 	-moz-box-shadow: #fff 0px 1px 0px;
+}
+
+#fortune {
+	font-size: 5em;
+	text-align: center;
+	top: 50%;
+	position: absolute;
 }

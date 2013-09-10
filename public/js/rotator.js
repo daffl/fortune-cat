@@ -10,7 +10,7 @@
       };
   })();
 
-  function Rotator(el, target) {
+  function Rotator(el) {
     this.vendor =
       (/webkit/i).test(navigator.appVersion) ? '-webkit' :
         (/firefox/i).test(navigator.userAgent) ? '-moz' :
@@ -24,10 +24,6 @@
     this.el = el;
     this.speed = 10;
     this.position = 0;
-
-    if (target) {
-      this.setTarget(target);
-    }
   }
 
   Rotator.prototype.setTarget = function (target) {
@@ -44,6 +40,12 @@
         requestAnimationFrame(loop);
       }
     })();
+  }
+
+  Rotator.prototype.setPosition = function(pos) {
+    this.running = false;
+    this.position = pos;
+    this.draw();
   }
 
   Rotator.prototype.draw = function () {

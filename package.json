@@ -4,7 +4,6 @@
   "description": "The 2013 Beakerhead Fortune Cat code",
   "main": "lib/app.js",
   "dependencies": {
-    "phidgets": "~0.2.0",
     "underscore": "~1.5.1",
     "express": "~3.3.8",
     "socket.io": "~0.9.16"

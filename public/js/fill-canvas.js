@@ -12,13 +12,22 @@
     return result;
   }
 
+  var getHeight = function(images) {
+    var result = 0;
+    images.forEach(function (img) {
+      result += img.height;
+    });
+
+    return result;
+  }
+
   // Images must be preloaded before they are used to draw into canvas
-  var preloadImages = function (images, callback) {
+  var preloadImages = function (folder, images, callback) {
     var results = [];
 
     function _preload(id) {
       var img = new Image();
-      img.src = 'img/' + id + '.png';
+      img.src = folder + id + '.png';
 
       img.addEventListener("load", function () {
         _check();
@@ -47,7 +56,8 @@
   }
 
   // draws canvas strip
-  var _fill_canvas = function (canvas, items) {
+  var _fill_canvas = function (canvas, items, options) {
+    var singleHeight = getHeight(items);
     var currentPosition = 0;
     var ctx = canvas.getContext('2d');
 
@@ -59,23 +69,26 @@
       ctx.shadowOffsetY = 5;
       ctx.shadowBlur = 5;
       ctx.drawImage(img, 0, currentPosition);
-      // ctx.drawImage(img, 3, (i + items.length) * img.height + options.marginTop);
+
+      if(options.repeat) {
+        ctx.drawImage(img, 3, currentPosition + singleHeight);
+      }
+
       ctx.restore();
-      // ctx.fillRect(0, currentPosition, img.width, options.separator);
-      // ctx.fillRect(0, (i + ITEM_COUNT) * SLOT_HEIGHT, 70, SLOT_SEPARATOR_HEIGHT);
       currentPosition += img.height;
     }
   }
 
-  $.fn.fillCanvas = function (srcs, callback) {
+  $.fn.fillCanvas = function (options, callback) {
     var self = this;
+    var srcs = options.images;
 
-    preloadImages(srcs, function (images) {
-      var finalHeight = 0;
+    preloadImages(options.folder || '', srcs, function (images) {
+      var finalHeight = getHeight(images);
 
-      images.forEach(function (img) {
-        finalHeight += img.height;
-      });
+      if(options.repeat) {
+        finalHeight = finalHeight * 2;
+      }
 
       self.attr('width', 200);
       self.css('width', 200);
@@ -83,7 +96,7 @@
       self.css('height', finalHeight);
 
       self.each(function () {
-        _fill_canvas(this, shuffleArray(images));
+        _fill_canvas(this, shuffleArray(images), options);
       });
 
       if(callback) {
