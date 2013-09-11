@@ -34,6 +34,7 @@
   Rotator.prototype.run = function () {
     var self = this;
     this.running = true;
+    this.el.addClass('rotating');
     (function loop() {
       self.draw();
       if (self.running) {
@@ -51,6 +52,7 @@
   Rotator.prototype.draw = function () {
     // translate canvas location
     if (this.position === this.target) {
+      this.el.removeClass('rotating');
       this.position = this.target;
       this.running = false;
     } else if (this.position < this.target) {

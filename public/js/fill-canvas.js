@@ -21,6 +21,15 @@
     return result;
   }
 
+  var getWidth = function(images) {
+    var result = 0;
+    images.forEach(function (img) {
+      result = Math.max(result, img.width);
+    });
+
+    return result;
+  }
+
   // Images must be preloaded before they are used to draw into canvas
   var preloadImages = function (folder, images, callback) {
     var results = [];
@@ -68,14 +77,20 @@
       ctx.shadowOffsetX = 5;
       ctx.shadowOffsetY = 5;
       ctx.shadowBlur = 5;
-      ctx.drawImage(img, 0, currentPosition);
+
+      if(options.width && options.height) {
+        ctx.drawImage(img, 0, currentPosition, options.width, options.height);
+        currentPosition += options.height;
+      } else {
+        ctx.drawImage(img, 0, currentPosition);
+        currentPosition += img.height;
+      }
 
       if(options.repeat) {
         ctx.drawImage(img, 3, currentPosition + singleHeight);
       }
 
       ctx.restore();
-      currentPosition += img.height;
     }
   }
 
@@ -84,14 +99,15 @@
     var srcs = options.images;
 
     preloadImages(options.folder || '', srcs, function (images) {
-      var finalHeight = getHeight(images);
+      var finalHeight = options.height ? options.height * images.length : getHeight(images);
+      var maxWidth = options.width || getWidth(images);
 
       if(options.repeat) {
         finalHeight = finalHeight * 2;
       }
 
-      self.attr('width', 200);
-      self.css('width', 200);
+      self.attr('width', maxWidth);
+      self.css('width', maxWidth);
       self.attr('height', finalHeight);
       self.css('height', finalHeight);
 

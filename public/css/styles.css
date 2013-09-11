@@ -5,26 +5,19 @@ body {
 }
 
 canvas {
-	border-left: 1px solid #777;
-	border-right: 1px solid #777;
 	background-color: #222;
 }
 
-canvas.active {
+canvas.active, canvas.rotating {
 	background-color: #186d8b;
 }
 
 #container {
-	position: absolute;
-	height: 220px;
-	left: 50%;
-	top: 50%;
-	margin-left: -320px;
-	margin-top: -110px;
+	margin: 20px auto;
+	width: 220px;
 }
 
-#container #reels {
-	padding: 0 10px;
+#container .reels {
 	display: block;
 	position: relative;
 	height: 200px;
@@ -33,6 +26,11 @@ canvas.active {
 	border-color: #777 #999 #666 #999;
 	border-radius: 3px;
 	-moz-box-shadow: #fff 0px 1px 0px;
+	margin-bottom: 20px;
+}
+
+#container .reels:last-child {
+	marign-bottom: 0;
 }
 
 #fortune {
@@ -40,4 +38,5 @@ canvas.active {
 	text-align: center;
 	top: 50%;
 	position: absolute;
+	width: 100%;
 }

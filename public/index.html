@@ -9,18 +9,18 @@
 </head>
 <body>
 	<div id="container">
-		<div id="reels">
-			<canvas id="first"></canvas>
-			<canvas id="second"></canvas>
-			<canvas id="third"></canvas>
-		</div>
+		<div class="reels"><canvas id="first"></canvas></div>
+		<div class="reels"><canvas id="second"></canvas></div>
+		<div class="reels"><canvas id="third"></canvas></div>
 	</div>
 	<div id="fortune" style="display: none;"></div>
 
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="js/lib/underscore.min.js"></script>
 	<script type="text/javascript" src="js/fill-canvas.js"></script>
 	<script type="text/javascript" src="js/rotator.js"></script>
+	<script type="text/javascript" src="js/fortune.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
