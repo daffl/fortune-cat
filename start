@@ -1,0 +1,9 @@
+#!/bin/sh
+
+sudo phidgetwebservice21 -n localhost &
+sleep 10
+/opt/node/bin/node /home/pi/fortune-cat/lib/app.js &
+sed -i 's/"exited_cleanly": false/"exited_cleanly": true/' \ 
+        ~/.config/google-chrome/Default/Preferences
+sleep 30
+chromium http://localhost:8888 --kiosk

@@ -24,6 +24,7 @@
           window.fortuneShowing = true;
           num = num || (++counter % fortunes.length);
           container.fadeOut(2000, function () {
+            $('.done').removeClass('done');
             fortune.html(fortunes[num]).fadeIn(2000, function () {
               setTimeout(hideFortune, 5000);
             }).css('margin-top', -(fortune.height() / 2));

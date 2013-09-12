@@ -2,6 +2,7 @@ body {
 	font-family:'Conv_HWYGOTH',Sans-Serif;
 	background-color: #333;
 	color: #FFF;
+	zoom: 200%;
 }
 
 canvas {
@@ -12,8 +13,12 @@ canvas.active, canvas.rotating {
 	background-color: #186d8b;
 }
 
+canvas.done {
+	background-color: #51aa24;
+}
+
 #container {
-	margin: 20px auto;
+	margin: 100px auto;
 	width: 220px;
 }
 
@@ -34,7 +39,7 @@ canvas.active, canvas.rotating {
 }
 
 #fortune {
-	font-size: 5em;
+	font-size: 4em;
 	text-align: center;
 	top: 50%;
 	position: absolute;
